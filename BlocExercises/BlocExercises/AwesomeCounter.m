@@ -13,8 +13,8 @@
 - (NSString *) stringWithNumbersBetweenNumber:(NSInteger)number andOtherNumber: (NSInteger)otherNumber {
     NSMutableString *result = [[NSMutableString alloc] init];
     
-    NSInteger low = (number < otherNumber) ? number : otherNumber;
-    NSInteger high = (number < otherNumber) ? otherNumber : number;
+    NSInteger low = MIN(number, otherNumber);
+    NSInteger high = MAX(number, otherNumber);
     
     for(NSInteger i=low; i<=high; i++) {
         [result appendString: [NSString stringWithFormat:@"%ld", (long)i]];
