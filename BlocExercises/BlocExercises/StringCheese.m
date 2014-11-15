@@ -11,18 +11,17 @@
 @implementation StringCheese
 
 - (NSString *) favoriteCheeseStringWithCheese:(NSString *)cheeseName {
-    NSMutableString *result = [@"My favorite cheese is " mutableCopy];
-    [result appendString:cheeseName];
-    [result appendString:@"."];
-    return result;
+    
+    return [NSString stringWithFormat:@"My favorite cheese is %@.", cheeseName ];
 }
 
 - (NSString *) cheeseNameWithoutCheeseSuffix:(NSString *)cheeseName {
     NSString *result = cheeseName;
-    NSRange range = [cheeseName rangeOfString:@" cheese" options:NSCaseInsensitiveSearch];
+    NSRange range = [cheeseName rangeOfString:@"cheese" options:NSCaseInsensitiveSearch | NSBackwardsSearch];
     if(range.length > 0) {
         result = [cheeseName stringByReplacingCharactersInRange:range withString:@""];
     }
+    result = [result stringByTrimmingCharactersInSet:[ NSCharacterSet whitespaceCharacterSet]];
     return result;
 }
 
