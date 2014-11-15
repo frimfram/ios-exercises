@@ -26,16 +26,12 @@
 }
 
 - (NSString *) numberOfCheesesStringWithCheeseCount:(NSUInteger)cheeseCount {
-    NSString * result = nil;
-    if (cheeseCount == 1) {
-        /* WORK HERE, ASSUMING THERE IS 1 CHEESE */
-        result = @"1 cheese";
-    } else {
-        /* WORK HERE, ASSUMING THERE ARE 2+ CHEESES */
-        result = [NSString stringWithFormat:@"%ld cheeses", (long)cheeseCount];
-    }
+    NSMutableString *count = [NSMutableString stringWithFormat:@"%ld cheese", (long)cheeseCount];
     
-    return result;
+    if(cheeseCount != 1) {
+        [count appendString:@"s"];
+    }
+    return count;
 }
 
 @end
