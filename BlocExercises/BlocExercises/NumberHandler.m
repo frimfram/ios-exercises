@@ -29,11 +29,8 @@
 
 - (NSInteger) lowestNumberInArray:(NSArray *)arrayOfNumbers {
     
-    NSSortDescriptor *sortDesc = [NSSortDescriptor sortDescriptorWithKey:nil ascending:YES];
-    NSArray * result = [arrayOfNumbers sortedArrayUsingDescriptors:@[sortDesc]];
-    NSNumber *first = [result firstObject];
-    
-    return [first longValue];
+    NSInteger result = [[arrayOfNumbers valueForKeyPath:@"@min.self"] integerValue];
+    return result;
 }
 
 @end
